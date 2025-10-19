@@ -9,13 +9,9 @@ def count_char(file_path):
     with open(file_path) as f:
         text = f.read()
     words = text.split()
-    lower_case = []
-    for word in words:
-        l_word = word.lower()
-        lower_case.append(l_word)
-    one_word = ""
-    for word in lower_case:
-        one_word+=word
+    lower_case = [word.lower() for word in words]
+    # one_word = ""
+    one_word = ''.join(word for word in lower_case)
     char_count = {}
     count = 0
     for char in one_word:
@@ -27,14 +23,12 @@ def count_char(file_path):
             count = char_count[char]+1
             char_count[char] = count
     return char_count
+
 def sort_on(items):
     return items["num"]
 def sorted_list(dictionary):
     list = []
-    # list = [{key:value} for key,value in dictionary.items()]
-    for key,value in dictionary.items():
-        x = {"char":key,"num":value}
-        list.append(x)
+    list = [{"char":key,"num":value} for key,value in dictionary.items()]
     list.sort(reverse=True,key=sort_on)
     for dict in list:
         if dict["char"].isalpha():
