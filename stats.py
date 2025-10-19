@@ -27,3 +27,15 @@ def count_char(file_path):
             count = char_count[char]+1
             char_count[char] = count
     return char_count
+def sort_on(items):
+    return items["num"]
+def sorted_list(dictionary):
+    list = []
+    # list = [{key:value} for key,value in dictionary.items()]
+    for key,value in dictionary.items():
+        x = {"char":key,"num":value}
+        list.append(x)
+    list.sort(reverse=True,key=sort_on)
+    for dict in list:
+        if dict["char"].isalpha():
+            print(f"{dict["char"]}: {dict["num"]}")
